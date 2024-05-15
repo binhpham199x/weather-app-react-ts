@@ -1,42 +1,57 @@
 // import request from "request";
 
 import { useEffect, useState } from "react";
+import { fetchCities } from "./services/CitiesService";
 
 function App() {
-   const API_KEY = import.meta.env.VITE_API_KEY;
+   // const API_KEY = import.meta.env.VITE_API_KEY;
 
-   const name = "hanoi";
+   // const name = "hanoi";
 
-   const url = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${API_KEY}`;
+   const url =
+      "https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/geonames-all-cities-with-a-population-1000/records?where=startswith(name,'Han')";
 
-   const [data, setData] = useState();
+   const [data, setData] = useState<unknown>();
 
-   const fetchData = async (): Promise<void> => {
+   const fetchData = async (): Promise<unknown> => {
       try {
-         const response: Response = await fetch(url, {
-            method: "GET",
-         });
+         const response: Response = await fetch(url);
 
          if (!response.ok) {
             throw new Error("Network response was not ok");
          }
-
-         setData(await response.json()); // Replace 'any' with the actual type of your response data
+         const res = await response.json();
+         // setData(res);
+         return res; // Replace 'any' with the actual type of your response data
       } catch (error) {
          console.error("Error:", error);
       }
    };
-   console.log(data);
 
    useEffect(() => {
-      fetchData();
+
+      console.log(data);
    }, []);
+
+   const handleClick = async () => {
+      const apiData = await fetchCities();
+      setData(apiData);
+      console.log(data);
+   };
 
    return (
       <>
          <h1 className="text-3xl font-bold underline">Hello world! </h1>
+         <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2"
+            onClick={handleClick}
+         >
+            Click
+         </button>
 
-         <pre id="json">{JSON.stringify(data, undefined, 2)}</pre>
+         {data != undefined && (
+            <pre id="json">{JSON.stringify(data, undefined, 2)}</pre>
+         )}
       </>
    );
 }
