@@ -10,7 +10,7 @@ const Header = ({ title = "THE WEATHER APP" }: Props) => {
 		<>
 			<div
 				id="headerWrapper"
-				className="flex justify-between content-center"
+				className="flex justify-between content-center "
 			>
 				<Heading title={title}></Heading>
 

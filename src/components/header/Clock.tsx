@@ -15,7 +15,7 @@ const Clock = () => {
 
 	}, []);
 
-	return <div id="clock" className="p-2">{currentTime(date)}</div>;
+	return <div id="clock" className="p-2 bg-white rounded-xl">{currentTime(date)}</div>;
 };
 
 export default Clock;

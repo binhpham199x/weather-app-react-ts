@@ -1,7 +1,7 @@
 const SearchBox = () => {
 	return (
 		<>
-			<div>SearchBox</div>
+			<div className="rounded-xl bg-white">SearchBox</div>
 		</>
 	);
 };
