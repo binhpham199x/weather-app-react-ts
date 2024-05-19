@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { fetchCities } from "./services/CitiesService";
 import SearchBox from "./components/SearchBox";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import CurrentForecast from "./components/today/TodayForecast";
 import WeeklyForcast from "./components/weekly/WeeklyForecast";
 
@@ -52,7 +52,7 @@ function App() {
                id="appWrapper"
                className="w-full max-w-screen-sm bg-white p-2 rounded-xl ring-8 ring-white ring-opacity-40"
             >
-               <Header></Header>
+               <Header ></Header>
                <SearchBox />
                <div id="forecastWrapper">
                   <CurrentForecast></CurrentForecast>
