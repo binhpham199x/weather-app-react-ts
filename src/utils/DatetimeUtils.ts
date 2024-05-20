@@ -1,4 +1,4 @@
-import { MONTHS } from "./Constants";
+import { MONTHS, WEEKDAYS } from "./Constants";
 
 const formatTime = (k: number): string => {
 	if (k < 10) {
@@ -28,4 +28,15 @@ export const currentTime = (date: Date): string => {
 	const y = date.getFullYear();
 
 	return `${hour}:${min}:${sec}, ${d} ${m} ${y}`;
+};
+
+export const getWeekday = (date: Date): string => {
+	return WEEKDAYS[date.getDay()];
+};
+
+export const getDate = (date: Date): string => {
+	const d = formatDate(date.getDate());
+	const m = MONTHS[date.getMonth()];
+
+	return `Today ${d} ${m}`;
 };
