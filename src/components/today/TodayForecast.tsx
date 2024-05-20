@@ -1,7 +1,11 @@
+interface Props {
+    
+}
+
 const TodayForecast = () => {
 	return (
 		<>
-			<div className="flex w-full overflow-auto h-full rounded-xl bg-white">
+			<div className="flex w-full overflow-auto h-full rounded-lg bg-white">
 				<div>
 					Lorem ipsum, dolor sit amet consectetur adipisicing elit.
 					Quisquam cumque, fugit sunt, excepturi veniam autem ducimus

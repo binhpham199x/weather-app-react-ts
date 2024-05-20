@@ -1,3 +1,5 @@
+import { CityApiData } from "../model/cityApi";
+
 const CITY_API_URL =
    "https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/geonames-all-cities-with-a-population-1000/records";
 
@@ -21,7 +23,7 @@ const filterName = (str: string): string => {
 export const fetchCities = async (
    namePrefix: string = "",
    limit: number = 7
-): Promise<unknown> => {
+): Promise<CityApiData | undefined> => {
    namePrefix = filterName(namePrefix);
 
    const nameQueryPart =

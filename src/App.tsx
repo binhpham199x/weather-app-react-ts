@@ -6,6 +6,7 @@ import SearchBox from "./components/SearchBox";
 import Header from "./components/header/Header";
 import CurrentForecast from "./components/today/TodayForecast";
 import WeeklyForcast from "./components/weekly/WeeklyForecast";
+import { CityApiData } from "./model/cityApi";
 
 function App() {
 	// const API_KEY = import.meta.env.VITE_API_KEY;
@@ -37,10 +38,15 @@ function App() {
 	}, []);
 
 	const handleClick = async () => {
-		const apiData = await fetchCities();
-		setData(apiData);
+		const apiData: CityApiData | undefined = await fetchCities();
+		setData(apiData?.results);
 		console.log(data);
 	};
+
+    const onSearchClick = () => {
+        console.log("searching");
+        
+    }
 
 	return (
 		<>
@@ -50,10 +56,10 @@ function App() {
 			>
 				<div
 					id="appWrapper"
-					className="w-full h-[80vh] max-w-screen-lg flex-col flex gap-5 p-3 rounded-xl ring-8 ring-white ring-opacity-40 bg-white overflow-auto bg-slate-300"
+					className="w-full h-[80vh] max-w-screen-lg flex-col flex gap-5 p-3 rounded-lg ring-8 ring-white ring-opacity-40 overflow-auto bg-slate-300 [&_*]:rounded-lg"
 				>
 					<Header></Header>
-					<SearchBox />
+					<SearchBox searchHandle={onSearchClick} />
 					<div id="forecastWrapper" className="columns-2 h-full">
 						<CurrentForecast></CurrentForecast>
 						<WeeklyForcast></WeeklyForcast>

@@ -4,7 +4,7 @@ interface Props {
 
 const Heading = ({ title }: Props) => {
 	return (
-		<div className=" p-2 rounded-xl uppercase font-bold bg-white ">
+		<div className=" p-2  uppercase font-bold bg-white ">
 			{title}
 		</div>
 	);
