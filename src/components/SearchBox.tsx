@@ -1,8 +1,12 @@
-interface Props{
-    searchHandle: () => void;
+import { BaseSyntheticEvent } from "react";
+
+interface Props {
+	value: string;
+	onSearchClick: () => void;
+	onSearchChange: (event: BaseSyntheticEvent) => void;
 }
 
-const SearchBox = ({searchHandle} : Props) => {
+const SearchBox = ({ value, onSearchClick: searchHandle, onSearchChange: onChangeHandle }: Props) => {
 	return (
 		<>
 			<div className="relative">
@@ -28,6 +32,8 @@ const SearchBox = ({searchHandle} : Props) => {
 					id="default-search"
 					className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
 					placeholder="Search place (e.g.: Berlin, Germany)"
+					onChange={onChangeHandle}
+					value={value}
 					required
 				/>
 				<button
